@@ -11,9 +11,7 @@ const KiritoDB = require("kirito.db.remote")
 const db = new KiritoDB("database") //coloque sua key secret sem uma key secret não e possível utilizar a database
 
 //Get na Db
-db.get(`Testeteetet.djdndj`).then((response) => {
-console.log(response)
-})
+await db.get(`Testeteetet.djdndj`)
 
 //add na Db
 db.add(`Teste.testeeee`, `90`)
@@ -30,9 +28,9 @@ db.delete(`Teste.trste`)
 
 
 // pegar todos os dados da db
-db.all().then((response) => {
-console.log(response)
-})
+await db.all()
+
+//Obs: Nas rotas de Get e All e necessário obrigatoriamente o uso de await
 ```
 
 Agradecemos por utilizar nossa package.
