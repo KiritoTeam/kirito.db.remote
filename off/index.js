@@ -3,7 +3,7 @@ client.config = require("./config");
 const axios = require("axios");
 const CryptoJS = require("crypto-js");
 
-const Urlbase = "https://npm-db-kiritodb.ecoguardiao.tech";
+const Urlbase = " ";
 const secret = "12C42799B4271ECBFC8CC8C13BC86";
 
 class KiritoDB {
