@@ -1,111 +1,70 @@
 client = require("./index");
 client.config = require("./config");
-const Urlbase = "https://npm-db-kiritodb.ecoguardiao.tech"
+const axios = require("axios");
+const CryptoJS = require("crypto-js");
 
-// Script by CroneGamesPlays Developer, NeoKurai Studios, ADS Sousa Group Corporation © 2020 - 2025 × Todos os direitos reservados.
-
-const axios = require('axios');
-//const fetch = require("node-fetch");
+const Urlbase = "https://npm-db-kiritodb.ecoguardiao.tech";
+const secret = "12C42799B4271ECBFC8CC8C13BC86";
 
 class KiritoDB {
   constructor(requiredString) {
     if (!requiredString) {
-      throw new Error("Você deve informar uma key para poder proteger seus dados.");
+      throw new Error("Você deve informar uma key para proteger seus dados.");
     }
-    this.requiredString = requiredString; // Armazena a string para uso posterior se necessário
+    this.requiredString = requiredString;
   }
 
-  //Métodos da class do KiritoDB
-
-  async add(rota, valor) {
-  try {
-    if (!rota) {
-      throw new Error("Você Deve Informar a Rota De Onde Será Salvo. Exemplo: 2030.carteira");
-    }
-
-    if (!valor || isNaN(valor) || !isFinite(valor)) {
-      throw new Error("Você Deve Informar Um Valor Numérico Válido");
-    }
-
-    const api = await axios.get(`${Urlbase}/api/v1/db/add?id=${this.requiredString}&rota=${rota}&valor=${valor}`);
-
-    return api.data;
-  } catch (error) {
-    throw new Error("Erro: " + error.message);
+  // 🔐 Função utilitária de criptografia segura
+  criptografar(payload) {
+    const stringJSON = JSON.stringify(payload);
+    const encrypted = CryptoJS.AES.encrypt(stringJSON, secret).toString();
+    return encodeURIComponent(encrypted); // compatível com URL
   }
-}
-
 
   async get(rota) {
-    try {
-      if (!rota) {
-        throw new Error("Você Deve Informar a Rota De Onde Será Salvo. Exemplo: 2030.carteira");
-      }
+    if (!rota) throw new Error("Informe a rota.");
 
-      const api = await axios.get(`${Urlbase}/api/v1/db/get?id=${this.requiredString}&rota=${rota}`);
-
-      return api.data;
-    } catch (error) {
-      throw new Error("Erro: " + error.message);
-    }
-  }
-
-  async sub(rota, valor) {
-    try {
-      if (!rota) {
-        throw new Error("Você Deve Informar a Rota De Onde Será Salvo. Exemplo: 2030.carteira");
-      }
-      if (!valor) {
-        throw new Error("Você Deve Informar O Valor Que Será Salvo");
-      }
-
-      const api = await axios.get(`${Urlbase}/api/v1/db/sub?id=${this.requiredString}&rota=${rota}&valor=${valor}`);
-
-      return api.data;
-    } catch (error) {
-      throw new Error("Erro: " + error.message);
-    }
-  }
-
-  async delete(rota) {
-    try {
-      if (!rota) {
-        throw new Error("Você Deve Informar a Rota De Onde Será Salvo. Exemplo: 2030.carteira");
-      }
-
-      const api = await axios.get(`${Urlbase}/api/v1/db/delete?id=${this.requiredString}&rota=${rota}`);
-
-      return api.data;
-    } catch (error) {
-      throw new Error("Erro: " + error.message);
-    }
+    const data = this.criptografar({ id: this.requiredString, rota });
+    const api = await axios.get(`${Urlbase}/api/v1/db/get?data=${data}`);
+    return api.data;
   }
 
   async set(rota, valor) {
-    try {
-      if (!rota) {
-        throw new Error("Você Deve Informar a Rota De Onde Será Salvo. Exemplo: 2030.carteira");
-      }
-      if (!valor) {
-        throw new Error("Você Deve Informar O Valor Que Será Salvo");
-      }
+    if (!rota || valor === undefined) throw new Error("Rota e valor são obrigatórios.");
+    
+    const data = this.criptografar({ id: this.requiredString, rota, valor });
+    const api = await axios.get(`${Urlbase}/api/v1/db/set?data=${data}`);
+    return api.data;
+  }
 
-      const api = await axios.get(`${Urlbase}/api/v1/db/set?id=${this.requiredString}&rota=${rota}&valor=${valor}`);
+  async add(rota, valor) {
+    if (!rota || isNaN(valor)) throw new Error("Rota e valor numérico são obrigatórios.");
 
-      return api.data;
-    } catch (error) {
-      throw new Error("Erro: " + error.message);
-    }
+    const data = this.criptografar({ id: this.requiredString, rota, valor });
+    const api = await axios.get(`${Urlbase}/api/v1/db/add?data=${data}`);
+    return api.data;
+  }
+
+  async sub(rota, valor) {
+    if (!rota || isNaN(valor)) throw new Error("Rota e valor numérico são obrigatórios.");
+
+    const data = this.criptografar({ id: this.requiredString, rota, valor });
+    const api = await axios.get(`${Urlbase}/api/v1/db/sub?data=${data}`);
+    return api.data;
+  }
+
+  async delete(rota) {
+    if (!rota) throw new Error("Informe a rota.");
+
+    const data = this.criptografar({ id: this.requiredString, rota });
+    const api = await axios.get(`${Urlbase}/api/v1/db/delete?data=${data}`);
+    return api.data;
   }
 
   async all() {
-    try {
-      const api = await axios.get(`${Urlbase}/api/v1/db/all?id=${this.requiredString}`);
-
-      return api.data;
-    } catch (error) {
-      throw new Error("Erro: " + error.message);
-    }
+    const data = this.criptografar({ id: this.requiredString });
+    const api = await axios.get(`${Urlbase}/api/v1/db/all?data=${data}`);
+    return api.data;
   }
 }
 
