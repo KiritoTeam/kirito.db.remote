@@ -5,7 +5,7 @@
 Você salva e acessa os dados usando "caminhos" como `"usuarios.1234.pontos"`.
 
 
-## :tools: Como usar
+## 🛠️  Como usar
 
 ### 1. **Importar e iniciar**
 
