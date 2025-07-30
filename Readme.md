@@ -1,3 +1,5 @@
+[![Status da API](https://g-status.ecoguardiao.tech/api/badge/5/status)](https://g-status.ecoguardiao.tech/status/kiritodb)
+
 ## :package: O que é o `kirito.db.remote`?
 
 É uma **database remota e simples** baseada em chave-valor (como um dicionário), ideal para **bots, APIs e projetos em Node.js**.
