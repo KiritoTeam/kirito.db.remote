@@ -1,0 +1,39 @@
+{
+  "name": "kirito.db.remote",
+  "version": "1.0.22",
+  "description": "KiritoDB Database Remota",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "database",
+    "br",
+    "pt-br",
+    "brazilian",
+    "only-portuguese",
+    "portuguese",
+    "no-english",
+    "quick.db",
+    "mongodb",
+    "db"
+  ],
+  "author": "kirito.dev",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^18.0.6",
+    "axios": "^1.4.0",
+    "console-log-colors": "^0.4.0",
+    "node-fetch": "^3.3.2",
+    "semver": "^7.5.4",
+    "crypto-js": "^4.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KiritoTeam/kirito.db.remote.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KiritoTeam/kirito.db.remote/issues"
+  },
+  "homepage": "https://github.com/KiritoTeam/kirito.db.remote#readme"
+}
