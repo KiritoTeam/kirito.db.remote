@@ -1,4 +1,4 @@
-[![Status da API](https://kd-status.ecoguardiao.tech/api/badge/1/status)](https://kd-status.ecoguardiao.tech/status/kiritodb)
+[![Status da API NPM](https://kd-status.ecoguardiao.tech/api/badge/1/status)](https://kd-status.ecoguardiao.tech/status/kiritodb)
 
 ## :package: O que é o `kirito.db.remote`?
 
