@@ -16,6 +16,18 @@ class KiritoDB {
   }
 
   //Métodos da class do KiritoDB
+    async ping(ping) {
+    try {
+      let pingt = Date.now();
+      const api = await axios.get(`${Urlbase}/api/v1/db/add?id=ping&rota=ping&valor=1`);
+      let pings = Date.now();
+      let ping = pings - pingt;
+
+      return ping;
+    } catch (error) {
+      throw new Error("Erro: " + error.message);
+    }
+  }
 
   async add(rota, valor) {
   try {
