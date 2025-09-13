@@ -1,4 +1,7 @@
-const KiritoDBV2 = require("./v2.js");
-const KiritoDB = require("./v3.js")
+const v2 = require("./v2.js");
+const v3 = require("./v3.js")
 
-module.exports = { KiritoDBV2, KiritoDB };
+const KiritoDB = v2.KiritoDB;
+const KiritoDBV3 = v3.KiritoDB;
+
+module.exports = { KiritoDBV3, KiritoDB };

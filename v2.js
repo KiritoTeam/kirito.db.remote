@@ -7,7 +7,7 @@ const Urlbase = "https://npm-db-kiritodb.ecoguardiao.tech"
 const axios = require('axios');
 //const fetch = require("node-fetch");
 
-class KiritoDBV2 {
+class KiritoDB {
   constructor(requiredString) {
     if (!requiredString) {
       throw new Error("Você deve informar uma key para poder proteger seus dados.");
@@ -121,7 +121,7 @@ class KiritoDBV2 {
   }
 }
 
-module.exports = KiritoDBV2;
+module.exports = { KiritoDB };
 
 require("./update");
 

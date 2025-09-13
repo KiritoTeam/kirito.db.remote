@@ -83,7 +83,7 @@ async ping(ping) {
   }
 }
 
-module.exports = KiritoDB;
+module.exports = { KiritoDB };
 
 require("./update");
 
