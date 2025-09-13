@@ -20,7 +20,22 @@ class KiritoDB {
     const encrypted = CryptoJS.AES.encrypt(stringJSON, secret).toString();
     return encodeURIComponent(encrypted); // compatível com URL
   }
+  
+async ping(ping) {
+    try {
+      let pingt = Date.now();
+      const rota = "ping";
+      const valor = "1";
+      const data = this.criptografar({ id: this.requiredString, rota, valor });
+      await axios.get(`${Urlbase}/api/v1/db/add?data=${data}`);
+      let pings = Date.now();
+      let ping = pings - pingt;
 
+      return ping;
+    } catch (error) {
+      throw new Error("Erro: " + error.message);
+    }
+  }
   async get(rota) {
     if (!rota) throw new Error("Informe a rota.");
 
