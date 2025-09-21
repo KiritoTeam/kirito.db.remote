@@ -1,6 +1,6 @@
 client = require("./index");
 client.config = require("./config");
-const Urlbase = "https://npm-db-kiritodb.ecoguardiao.tech"
+const Urlbase = "https://kiritodb.adssousag.is-a.dev"
 
 // Script by CroneGamesPlays Developer, NeoKurai Studios, ADS Sousa Group Corporation © 2020 - 2025 × Todos os direitos reservados.
 

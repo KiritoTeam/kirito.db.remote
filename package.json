@@ -1,6 +1,6 @@
 {
   "name": "kirito.db.remote",
-  "version": "1.0.31",
+  "version": "1.0.32",
   "description": "KiritoDB Database Remota",
   "main": "index.js",
   "scripts": {
