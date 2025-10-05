@@ -1,4 +1,6 @@
-[![Status da API NPM](https://kd-status.ecoguardiao.tech/api/badge/1/status)](https://kd-status.ecoguardiao.tech/status/kiritodb)
+[![Status](https://status-kiritodb.adssousag.is-a.dev/api/badge/1/status)](https://status-kiritodb.adssousag.is-a.dev/status/kiritodb)
+[![Uptime](https://status-kiritodb.adssousag.is-a.dev/api/badge/1/uptime)](https://status-kiritodb.adssousag.is-a.dev/status/kiritodb)
+[![Ping](https://status-kiritodb.adssousag.is-a.dev/api/badge/1/ping)](https://status-kiritodb.adssousag.is-a.dev/status/kiritodb)
 
 ## :package: O que é o `kirito.db.remote`?
 
@@ -6,16 +8,18 @@
 
 Você salva e acessa os dados usando "caminhos" como `"usuarios.1234.pontos"`.
 
+---
 
 ## 🛠️  Como usar
 
 ### 1. **Importar e iniciar**
 
 ```js
-const KiritoDB = require("kirito.db.remote")
+const { KiritoDB } = require("kirito.db.remote")
 const db = new KiritoDB("sua_key_secreta") // SEM a key secreta, nada funciona!
-```
+````
 
+---
 
 ## :wrench: Métodos disponíveis
 
@@ -29,6 +33,7 @@ await db.get("usuarios.1234.pontos")
 > :white_check_mark: Aceita qualquer tipo de dado.
 > :warning: **Precisa de `await`**.
 
+---
 
 ### :heavy_plus_sign: `add`: somar valor
 
@@ -40,6 +45,7 @@ db.add("usuarios.1234.pontos", 10)
 > :white_check_mark: **Só funciona com números**.
 > :x: Se o valor for string, array, objeto, etc., vai dar erro.
 
+---
 
 ### :heavy_minus_sign: `sub`: subtrair valor
 
@@ -50,6 +56,7 @@ db.sub("usuarios.1234.pontos", 5)
 > **Subtrai um número** do valor atual.
 > :white_check_mark: **Só funciona com números**.
 
+---
 
 ### :writing_hand: `set`: definir valor
 
@@ -59,8 +66,9 @@ db.set("usuarios.1234.nome", "Arthur")
 
 > Define um valor novo na chave, sobrescrevendo o que já tiver.
 > :white_check_mark: **Aceita qualquer tipo de valor** (string, número...).
-> :x: Se o valor for array, objeto., vai dar erro.
+> :x: Se o valor for array ou objeto, vai dar erro.
 
+---
 
 ### :x: `delete`: apagar valor
 
@@ -70,6 +78,7 @@ db.delete("usuarios.1234.pontos")
 
 > Remove a chave e seu valor da database.
 
+---
 
 ### :clipboard: `all`: pegar todos os dados
 
@@ -80,6 +89,7 @@ await db.all()
 > Retorna todos os dados salvos.
 > :warning: **Precisa de `await`**.
 
+---
 
 ## :warning: Observações importantes:
 
@@ -89,3 +99,5 @@ await db.all()
 * **`set` funciona com qualquer tipo de valor.**
 
 * Métodos que **acessam dados** (`get` e `all`) precisam do **`await`** porque são assíncronos (esperam resposta do servidor).
+
+```
