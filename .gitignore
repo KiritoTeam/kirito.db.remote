@@ -1,0 +1,8 @@
+node_modules/
+package-lock.json
+.npm
+Lavalink.jar
+application.yml
+java-runtime
+plugins
+.npmrc
