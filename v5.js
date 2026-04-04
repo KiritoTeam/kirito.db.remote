@@ -1,6 +1,6 @@
 client = require("./index");
 client.config = require("./config");
-const Urlbase = "https://kiritodb.adssousag.is-a.dev/dbv5"
+const Urlbase = "https://kiritodb.adssousag.is-a.dev/dbv2"
 
 // Script by CroneGamesPlays Developer, NeoKurai Studios, ADS Sousa Group Corporation © 2020 - 2025 × Todos os direitos reservados.
 
@@ -40,9 +40,11 @@ class KiritoDB {
       }
 
       // Para operações de adição/subtração, o valor ainda deve ser numérico no cliente
-      if (typeof valor !== 'number' || isNaN(valor) || !isFinite(valor)) {
+      let numericValor = Number(valor);
+      if (isNaN(numericValor) || !isFinite(numericValor)) {
         throw new Error("Você Deve Informar Um Valor Numérico Válido para a operação 'add'");
       }
+      valor = numericValor; // Usar o valor numérico convertido
 
       // O endpoint /add no servidor agora espera um POST com body
       const api = await axios.post(`${Urlbase}/api/v1/db/add`, {
@@ -79,9 +81,11 @@ class KiritoDB {
       }
       
       // Para operações de adição/subtração, o valor ainda deve ser numérico no cliente
-      if (typeof valor !== 'number' || isNaN(valor) || !isFinite(valor)) {
+      let numericValor = Number(valor);
+      if (isNaN(numericValor) || !isFinite(numericValor)) {
         throw new Error("Você Deve Informar Um Valor Numérico Válido para a operação 'sub'");
       }
+      valor = numericValor; // Usar o valor numérico convertido
 
       // O endpoint /sub no servidor agora espera um POST com body
       const api = await axios.post(`${Urlbase}/api/v1/db/sub`, {
