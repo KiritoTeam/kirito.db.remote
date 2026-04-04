@@ -1,6 +1,6 @@
 client = require("./index");
 client.config = require("./config");
-const Urlbase = "https://kiritodb.adssousag.is-a.dev/dbv2"
+const Urlbase = "https://kiritodb.adssousag.is-a.dev/dbv1"
 
 // Script by CroneGamesPlays Developer, NeoKurai Studios, ADS Sousa Group Corporation © 2020 - 2025 × Todos os direitos reservados.
 
