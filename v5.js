@@ -1,6 +1,6 @@
 client = require("./index");
 client.config = require("./config");
-const Urlbase = "https://kiritodb.adssousag.is-a.dev/dbv5"
+const Urlbase = "https://kiritodb.adssousag.is-a.dev"
 
 // Script by CroneGamesPlays Developer, NeoKurai Studios, ADS Sousa Group Corporation © 2020 - 2025 × Todos os direitos reservados.
 
@@ -19,7 +19,7 @@ class KiritoDB {
     try {
       let pingt = Date.now();
       // O endpoint /add no servidor agora espera um POST com body
-      const api = await axios.post(`${Urlbase}/api/v1/db/add`, {
+      const api = await axios.post(`${Urlbase}/api/v5/db/add`, {
         id: "ping",
         rota: "ping",
         valor: 1
@@ -47,7 +47,7 @@ class KiritoDB {
       valor = numericValor; // Usar o valor numérico convertido
 
       // O endpoint /add no servidor agora espera um POST com body
-      const api = await axios.post(`${Urlbase}/api/v1/db/add`, {
+      const api = await axios.post(`${Urlbase}/api/v5/db/add`, {
         id: this.requiredString,
         rota: rota,
         valor: valor
@@ -66,7 +66,7 @@ class KiritoDB {
       }
 
       // O endpoint /get continua sendo um GET com query parameters
-      const api = await axios.get(`${Urlbase}/api/v1/db/get?id=${this.requiredString}&rota=${rota}`);
+      const api = await axios.get(`${Urlbase}/api/v5/db/get?id=${this.requiredString}&rota=${rota}`);
 
       return api.data;
     } catch (error) {
@@ -88,7 +88,7 @@ class KiritoDB {
       valor = numericValor; // Usar o valor numérico convertido
 
       // O endpoint /sub no servidor agora espera um POST com body
-      const api = await axios.post(`${Urlbase}/api/v1/db/sub`, {
+      const api = await axios.post(`${Urlbase}/api/v5/db/sub`, {
         id: this.requiredString,
         rota: rota,
         valor: valor
@@ -107,7 +107,7 @@ class KiritoDB {
       }
 
       // O endpoint /delete no servidor agora espera um DELETE com body
-      const api = await axios.delete(`${Urlbase}/api/v1/db/delete`, {
+      const api = await axios.delete(`${Urlbase}/api/v5/db/delete`, {
         data: { // Para DELETE com body, o axios usa a propriedade 'data'
           id: this.requiredString,
           rota: rota
@@ -131,7 +131,7 @@ class KiritoDB {
       }
 
       // O endpoint /set no servidor agora espera um POST com body
-      const api = await axios.post(`${Urlbase}/api/v1/db/set`, {
+      const api = await axios.post(`${Urlbase}/api/v5/db/set`, {
         id: this.requiredString,
         rota: rota,
         valor: valor
@@ -146,7 +146,7 @@ class KiritoDB {
   async all() {
     try {
       // O endpoint /all continua sendo um GET com query parameters
-      const api = await axios.get(`${Urlbase}/api/v1/db/all?id=${this.requiredString}`);
+      const api = await axios.get(`${Urlbase}/api/v5/db/all?id=${this.requiredString}`);
 
       return api.data;
     } catch (error) {

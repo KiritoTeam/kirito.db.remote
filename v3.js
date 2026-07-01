@@ -3,7 +3,7 @@ client.config = require("./config");
 const axios = require("axios");
 const CryptoJS = require("crypto-js");
 
-const Urlbase = "https://kiritodb.adssousag.is-a.dev/dbv3";
+const Urlbase = "https://kiritodb.adssousag.is-a.dev";
 const secret = "12C42799B4271ECBFC8CC8C13BC86";
 
 class KiritoDB {
@@ -27,7 +27,7 @@ async ping(ping) {
       const rota = "ping";
       const valor = "1";
       const data = this.criptografar({ id: this.requiredString, rota, valor });
-      await axios.get(`${Urlbase}/api/v1/db/add?data=${data}`);
+      await axios.get(`${Urlbase}/api/v3/db/add?data=${data}`);
       let pings = Date.now();
       let ping = pings - pingt;
 
@@ -40,7 +40,7 @@ async ping(ping) {
     if (!rota) throw new Error("Informe a rota.");
 
     const data = this.criptografar({ id: this.requiredString, rota });
-    const api = await axios.get(`${Urlbase}/api/v1/db/get?data=${data}`);
+    const api = await axios.get(`${Urlbase}/api/v3/db/get?data=${data}`);
     return api.data;
   }
 
@@ -48,7 +48,7 @@ async ping(ping) {
     if (!rota || valor === undefined) throw new Error("Rota e valor são obrigatórios.");
     
     const data = this.criptografar({ id: this.requiredString, rota, valor });
-    const api = await axios.get(`${Urlbase}/api/v1/db/set?data=${data}`);
+    const api = await axios.get(`${Urlbase}/api/v3/db/set?data=${data}`);
     return api.data;
   }
 
@@ -56,7 +56,7 @@ async ping(ping) {
     if (!rota || isNaN(valor)) throw new Error("Rota e valor numérico são obrigatórios.");
 
     const data = this.criptografar({ id: this.requiredString, rota, valor });
-    const api = await axios.get(`${Urlbase}/api/v1/db/add?data=${data}`);
+    const api = await axios.get(`${Urlbase}/api/v3/db/add?data=${data}`);
     return api.data;
   }
 
@@ -64,7 +64,7 @@ async ping(ping) {
     if (!rota || isNaN(valor)) throw new Error("Rota e valor numérico são obrigatórios.");
 
     const data = this.criptografar({ id: this.requiredString, rota, valor });
-    const api = await axios.get(`${Urlbase}/api/v1/db/sub?data=${data}`);
+    const api = await axios.get(`${Urlbase}/api/v3/db/sub?data=${data}`);
     return api.data;
   }
 
@@ -72,13 +72,13 @@ async ping(ping) {
     if (!rota) throw new Error("Informe a rota.");
 
     const data = this.criptografar({ id: this.requiredString, rota });
-    const api = await axios.get(`${Urlbase}/api/v1/db/delete?data=${data}`);
+    const api = await axios.get(`${Urlbase}/api/v3/db/delete?data=${data}`);
     return api.data;
   }
 
   async all() {
     const data = this.criptografar({ id: this.requiredString });
-    const api = await axios.get(`${Urlbase}/api/v1/db/all?data=${data}`);
+    const api = await axios.get(`${Urlbase}/api/v3/db/all?data=${data}`);
     return api.data;
   }
 }

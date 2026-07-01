@@ -1,6 +1,6 @@
 client = require("./index");
 client.config = require("./config");
-const Urlbase = "https://kiritodb.adssousag.is-a.dev/dbv4"
+const Urlbase = "https://kiritodb.adssousag.is-a.dev"
 
 // Script by CroneGamesPlays Developer, NeoKurai Studios, ADS Sousa Group Corporation © 2020 - 2025 × Todos os direitos reservados.
 
@@ -18,7 +18,7 @@ class KiritoDB {
   async ping() {
     try {
       let pingt = Date.now();
-      await axios.post(`${Urlbase}/api/v1/db/add`, {
+      await axios.post(`${Urlbase}/api/v4/db/add`, {
         id: "ping",
         rota: "ping",
         valor: 1
@@ -38,7 +38,7 @@ class KiritoDB {
         throw new Error("Você Deve Informar Um Valor Numérico Válido");
       }
 
-      const api = await axios.post(`${Urlbase}/api/v1/db/add`, {
+      const api = await axios.post(`${Urlbase}/api/v4/db/add`, {
         id: this.requiredString,
         rota,
         valor
@@ -54,7 +54,7 @@ class KiritoDB {
   async get(rota) {
     try {
       if (!rota) throw new Error("Você Deve Informar a Rota.");
-      const api = await axios.post(`${Urlbase}/api/v1/db/get`, {
+      const api = await axios.post(`${Urlbase}/api/v4/db/get`, {
         id: this.requiredString,
         rota
       });
@@ -70,7 +70,7 @@ class KiritoDB {
       if (!rota) throw new Error("Você Deve Informar a Rota.");
       if (!valor) throw new Error("Você Deve Informar O Valor.");
 
-      const api = await axios.post(`${Urlbase}/api/v1/db/sub`, {
+      const api = await axios.post(`${Urlbase}/api/v4/db/sub`, {
         id: this.requiredString,
         rota,
         valor
@@ -87,7 +87,7 @@ class KiritoDB {
     try {
       if (!rota) throw new Error("Você Deve Informar a Rota.");
 
-      const api = await axios.post(`${Urlbase}/api/v1/db/delete`, {
+      const api = await axios.post(`${Urlbase}/api/v4/db/delete`, {
         id: this.requiredString,
         rota
       });
@@ -104,7 +104,7 @@ class KiritoDB {
       if (!rota) throw new Error("Você Deve Informar a Rota.");
       if (!valor) throw new Error("Você Deve Informar O Valor.");
 
-      const api = await axios.post(`${Urlbase}/api/v1/db/set`, {
+      const api = await axios.post(`${Urlbase}/api/v4/db/set`, {
         id: this.requiredString,
         rota,
         valor
@@ -119,7 +119,7 @@ class KiritoDB {
   // 🔹 All
   async all() {
     try {
-      const api = await axios.post(`${Urlbase}/api/v1/db/all`, {
+      const api = await axios.post(`${Urlbase}/api/v4/db/all`, {
         id: this.requiredString
       });
       return api.data;

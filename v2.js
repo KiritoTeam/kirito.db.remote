@@ -1,6 +1,6 @@
 client = require("./index");
 client.config = require("./config");
-const Urlbase = "https://kiritodb.adssousag.is-a.dev/dbv2"
+const Urlbase = "https://kiritodb.adssousag.is-a.dev"
 
 // Script by CroneGamesPlays Developer, NeoKurai Studios, ADS Sousa Group Corporation © 2020 - 2025 × Todos os direitos reservados.
 
@@ -19,7 +19,7 @@ class KiritoDB {
     async ping(ping) {
     try {
       let pingt = Date.now();
-      const api = await axios.get(`${Urlbase}/api/v1/db/add?id=ping&rota=ping&valor=1`);
+      const api = await axios.get(`${Urlbase}/api/v2/db/add?id=ping&rota=ping&valor=1`);
       let pings = Date.now();
       let ping = pings - pingt;
 
@@ -39,7 +39,7 @@ class KiritoDB {
       throw new Error("Você Deve Informar Um Valor Numérico Válido");
     }
 
-    const api = await axios.get(`${Urlbase}/api/v1/db/add?id=${this.requiredString}&rota=${rota}&valor=${valor}`);
+    const api = await axios.get(`${Urlbase}/api/v2/db/add?id=${this.requiredString}&rota=${rota}&valor=${valor}`);
 
     return api.data;
   } catch (error) {
@@ -54,7 +54,7 @@ class KiritoDB {
         throw new Error("Você Deve Informar a Rota De Onde Será Salvo. Exemplo: 2030.carteira");
       }
 
-      const api = await axios.get(`${Urlbase}/api/v1/db/get?id=${this.requiredString}&rota=${rota}`);
+      const api = await axios.get(`${Urlbase}/api/v2/db/get?id=${this.requiredString}&rota=${rota}`);
 
       return api.data;
     } catch (error) {
@@ -71,7 +71,7 @@ class KiritoDB {
         throw new Error("Você Deve Informar O Valor Que Será Salvo");
       }
 
-      const api = await axios.get(`${Urlbase}/api/v1/db/sub?id=${this.requiredString}&rota=${rota}&valor=${valor}`);
+      const api = await axios.get(`${Urlbase}/api/v2/db/sub?id=${this.requiredString}&rota=${rota}&valor=${valor}`);
 
       return api.data;
     } catch (error) {
@@ -85,7 +85,7 @@ class KiritoDB {
         throw new Error("Você Deve Informar a Rota De Onde Será Salvo. Exemplo: 2030.carteira");
       }
 
-      const api = await axios.get(`${Urlbase}/api/v1/db/delete?id=${this.requiredString}&rota=${rota}`);
+      const api = await axios.get(`${Urlbase}/api/v2/db/delete?id=${this.requiredString}&rota=${rota}`);
 
       return api.data;
     } catch (error) {
@@ -102,7 +102,7 @@ class KiritoDB {
         throw new Error("Você Deve Informar O Valor Que Será Salvo");
       }
 
-      const api = await axios.get(`${Urlbase}/api/v1/db/set?id=${this.requiredString}&rota=${rota}&valor=${valor}`);
+      const api = await axios.get(`${Urlbase}/api/v2/db/set?id=${this.requiredString}&rota=${rota}&valor=${valor}`);
 
       return api.data;
     } catch (error) {
@@ -112,7 +112,7 @@ class KiritoDB {
 
   async all() {
     try {
-      const api = await axios.get(`${Urlbase}/api/v1/db/all?id=${this.requiredString}`);
+      const api = await axios.get(`${Urlbase}/api/v2/db/all?id=${this.requiredString}`);
 
       return api.data;
     } catch (error) {
